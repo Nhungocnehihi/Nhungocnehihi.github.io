@@ -1,0 +1,16 @@
+body {
+	background: #b8dae3;
+}
+
+
+#content {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center; 
+	
+}
+
+h1 {
+	font-size: 3rem
+}

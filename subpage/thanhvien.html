@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Thành viên</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../styled/thanhvien.css">
+	
+	
+	<link rel="icon" type="image/x-icon" href="/icon/thanhvien.png">	
+
+</head>
+
+<body>
+
+	<div id="menu"></div>
+	<script>
+		$('#menu').load('/header/header.html', (response, status, xhr) => {
+			$('#thanhvien').addClass('selected');
+			var myTimeOut = setTimeout(() => {
+				$('#content').innerHeight($(window).innerHeight() - document.querySelector('#menu').clientHeight);
+				clearTimeout(myTimeOut)
+			}, 100)
+		})
+	</script>
+
+	<div id="content">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+		<h1 class="h1-text">
+			<i class="fa fa-users" aria-hidden="true"></i>Thành viên trong nhóm
+		</h1>
+		<div class="container">
+			
+			<div class="box">
+				<div class="top-bar"></div>
+				<div class="top">
+					<i class="fa fa-check-circle" aria-hidden="true"></i>
+					<input type="checkbox" class="heart-btn" id="heart-btn-1">
+					<label class="heart" for="heart-btn-1"></label>
+				</div>
+				<div class="content">
+					<img src="../thanhvien/a_1.jpg" alt="">
+					<strong>Nguyễn Quốc Chiều</strong>
+					<p class="title">Trưởng nhóm</p>
+					<p class="mssv">B1905891</p>
+					<p>chieub1905891@student.ctu.edu.vn</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="top-bar"></div>
+				<div class="top">
+					<div>
+						<i class="fa fa-check-circle" aria-hidden="true"></i>
+					</div>
+					<div>
+						<input type="checkbox" class="heart-btn" id="heart-btn-2">
+						<label class="heart" for="heart-btn-2"></label>
+					</div>
+				</div>
+				<div class="content">
+					<img src="../thanhvien/a_2.jpg" alt="">
+					<strong>Nguyễn Thị Trúc Ly</strong>
+					<p class="title">Thành viên</p>
+					<p class="mssv">B1905937</p>
+					<p>lyb1905937@student.ctu.edu.vn</p>
+				</div>
+				
+			</div>
+			<div class="box">
+				<div class="top-bar"></div>
+				<div class="top">
+					<i class="fa fa-check-circle" aria-hidden="true"></i>
+					<input type="checkbox" class="heart-btn" id="heart-btn-3">
+					<label class="heart" for="heart-btn-3"></label>
+				</div>
+				<div class="content">
+					<img src="../thanhvien/a_3.jpg" alt="">
+					<strong>Lê Nguyễn Bảo Chân</strong>
+					<p class="title">Thành viên</p>
+					<p class="mssv">B1905737</p>
+					<p>chanb1905737@student.ctu.edu.vn</p>
+				</div>
+				
+			</div>
+			
+			<div class="box">
+				<div class="top-bar"></div>
+				<div class="top">
+					<i class="fa fa-check-circle" aria-hidden="true"></i>
+					<input type="checkbox" class="heart-btn" id="heart-btn-4">
+					<label class="heart" for="heart-btn-4"></label>
+				</div>
+				<div class="content">
+					<img src="../thanhvien/a_4.jpg" alt="">
+					<strong>Phạm Huỳnh Như Ngọc</strong>
+					<p class="title">Thành viên</p>
+					<p class="mssv">B1905951</p>
+					<p>ngocb1905951@student.ctu.edu.vn</p>
+				</div>
+				
+			</div>
+			
+			<div class="box">
+				<div class="top-bar"></div>
+				<div class="top">
+					<i class="fa fa-check-circle" aria-hidden="true"></i>
+					<input type="checkbox" class="heart-btn" id="heart-btn-5">
+					<label class="heart" for="heart-btn-5"></label>
+				</div>
+				<div class="content">
+					<img src="../thanhvien/a_5.jpg" alt="">
+					<strong>Huỳnh Thị Mỹ Huyền</strong>
+					<p class="title">Thành viên</p>
+					<p class="mssv">B1905916</p>
+					<p>huyenb1905916@student.ctu.edu.vn</p>
+					
+				</div>
+				
+			</div>
+			
+			
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>

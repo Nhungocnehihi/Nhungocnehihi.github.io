@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Liên hệ</title>
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../styled/lienhe.css">
+		
+		<link rel="icon" type="image/x-icon" href="/icon/contact.png">	
+	</head>
+	<body>
+		<div id="menu"></div>
+		<script>
+			$('#menu').load('/header/header.html', (response, status, xhr) => {
+				$('#lienhe').addClass('selected');
+				var myTimeOut = setTimeout(() => {
+					$('#content').innerHeight($(window).innerHeight() - document.querySelector('#menu').clientHeight);
+					clearTimeout(myTimeOut)
+				}, 100)
+			})
+		</script>
+		<div id="content">
+			<section class="ftco-section">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-12">
+							<div class="wrapper">
+								<div class="row mb-5 center">
+									<div class="col-md-3">
+										<div class="dbox w-100 text-center">
+											<div class="icon d-flex align-items-center justify-content-center">
+												<span class="fa fa-address-card"></span>
+											</div>
+											<div class="text">
+												<p>
+													<span>Tên: </span>Nguyễn Quốc Chiều
+												</p>
+											</div>
+										</div>
+									</div>
+									<!-- 									<div class="col-md-3"><div class="dbox w-100 text-center"><div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-map-marker"></span></div><div class="text"><p><span>Address:</span> Đại học Cần Thơ
+												</p></div></div></div> -->
+									<div class="col-md-3">
+										<div class="dbox w-100 text-center">
+											<div class="icon d-flex align-items-center justify-content-center">
+												<span class="fa fa-phone"></span>
+											</div>
+											<div class="text">
+												<p>
+													<span>Phone:</span>
+													<a href="tel://1234567920">0967889714</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="dbox w-100 text-center">
+											<div class="icon d-flex align-items-center justify-content-center">
+												<span class="fa fa-paper-plane"></span>
+											</div>
+											<div class="text">
+												<p>
+													<span>Email:</span>
+													<a href="mailto:info@yoursite.com">chieub1905891@student.ctu.edu.vn</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row no-gutters">
+									<div class="col-md-7">
+										<div class="contact-wrap w-100 p-md-5 p-4">
+											<h3 class="mb-4">Liên hệ với tôi</h3>
+											<div id="form-message-warning" class="mb-4"></div>
+											<div id="form-message-success" class="mb-4"> Your message was sent, thank you! </div>
+											<form id="contactForm" name="contactForm" class="contactForm">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="label label-fullname" for="name">Full Name</label>
+															<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="label label-email" for="email">Email Address</label>
+															<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+														</div>
+													</div>
+													<div class="col-md-12">
+														<div class="form-group">
+															<label class="label label-subject" for="subject">Subject</label>
+															<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														</div>
+													</div>
+													<div class="col-md-12">
+														<div class="form-group">
+															<label class="label label-message">Message</label>
+															<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+														</div>
+													</div>
+													<div class="col-md-12">
+														<div class="form-group">
+															<input type="submit" value="Send Message" class="btn btn-primary">
+															<div class="submitting"></div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="col-md-5 d-flex align-items-stretch">
+										<div class="info-wrap w-100 p-5 img" style="background-image: url(../thanhvien/a_1.jpg);"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<script src="/jquery.validate.min.js"></script>
+			<script>
+				(function($) {
+					"use strict";
+					// Form
+					var contactForm = function() {
+						if ($('#contactForm').length > 0) {
+							$("#contactForm").validate({
+								rules: {
+									name: "required",
+									subject: "required",
+									email: {
+										required: true,
+										email: true
+									},
+									message: {
+										required: true,
+										minlength: 5
+									}
+								},
+								messages: {
+									name: "Please enter your name",
+									subject: "Please enter your subject",
+									email: "Please enter a valid email address",
+									message: "Please enter a message"
+								},
+								/* submit via ajax */
+								submitHandler: function(form) {
+									var data = $(form).serialize()
+									var url = new URL('https://dat/a?' + data);
+									var name = url.searchParams.get("name");
+									var email = url.searchParams.get("email");
+									var subject = url.searchParams.get("subject");
+									var message = url.searchParams.get("message");
+									console.log(name, email, subject, message)
+									window.location.href = `mailto:${email}?subject=${subject}&body=${message}`
+								} // end submitHandler
+							});
+						}
+					};
+					contactForm();
+				})(jQuery);
+			</script>
+		</div>
+	</body>
+</html>

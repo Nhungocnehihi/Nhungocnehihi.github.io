@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tổng quan</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<style>
+		#content {
+			
+		}
+	</style>
+	
+	<link rel="stylesheet" href="/styled/tongquan.css">
+	
+	<link rel="icon" type="image/x-icon" href="/icon/ytuong.png">	
+
+</head>
+
+<body>
+
+	<div id="menu"></div>
+	<script>
+		$('#menu').load('/header/header.html', (response, status, xhr) => {
+			$('#tongquan').addClass('selected');
+			var myTimeOut = setTimeout(() => {
+				$('#content').innerHeight($(window).innerHeight() - document.querySelector('#menu').clientHeight);
+				clearTimeout(myTimeOut)
+			}, 100)
+		})
+	</script>
+
+	<div id="content">
+		
+		<div class="container">
+			<h1>QUẢN LÝ CHUỖI CUNG ỨNG HỆ THỐNG PHÂN PHỐI SỮA</h1>
+			
+			<ul>
+				<li>Thành viên</li>
+				<li>Ý tưởng</li>
+				<li>Shopping</li>
+				<li>Thống kê</li>
+				<li>Liên lạc</li>
+			</ul>
+		</div>
+		
+
+	</div>
+
+
+
+</body>
+
+</html>

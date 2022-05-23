@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Shopping</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+
+
+	<link rel="stylesheet" href="../styled/shopping.css" />
+	<link rel="icon" type="image/x-icon" href="/icon/shopping.png">	
+</head>
+
+<body>
+	<div id="menu"></div>
+	<script>
+		$("#menu").load("/header/header.html", (response, status, xhr) => {
+			$("#shopping").addClass("selected");
+			var myTimeOut = setTimeout(() => {
+				$("#content").innerHeight($(window).innerHeight() - document.querySelector("#menu").clientHeight);
+				clearTimeout(myTimeOut);
+			}, 100);
+		});
+	</script>
+
+	<div id="content">
+		<div class="container mt-5 mb-5">
+			<div class="d-flex justify-content-center row">
+				<div class="col-md-10">
+
+
+
+					<div class="row p-2 bg-white border rounded mt-2">
+						<div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../sua/s_1.jpeg" alt="" /></div>
+						<div class="col-md-6 mt-1">
+							<h5>Sữa tươi có đường</h5>
+							<div class="d-flex flex-row">
+								<div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+								<span class="stored" id="stored-milk-1">0</span>
+							</div>
+							<div class="mt-1 mb-1 spec-1">
+								<span>100% tươi sạch</span><span class="dot"></span><span>Thơm ngon</span><span class="dot"></span><span>Ít đường<br /></span>
+							</div>
+							<div class="mt-1 mb-1 spec-1">
+								<span>Không chắc bảo quản</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br /></span>
+							</div>
+							
+						</div>
+						<div class="align-items-center align-content-center col-md-3 border-left mt-1">
+							<div class="d-flex flex-column mt-4">
+								<input class="input-sale" id="input-milk-1" placeholder="Nhập số lượng mua" />
+								<button class="btn btn-outline-primary btn-sm mt-2 btn-sale" type="button" id="btn-milk-1">Mua</button>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row p-2 bg-white border rounded mt-2">
+						<div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../sua/s_2.jpeg" alt="" /></div>
+						<div class="col-md-6 mt-1">
+							<h5>Sữa tươi không đường</h5>
+							<div class="d-flex flex-row">
+								<div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+								<span class="stored" id="stored-milk-2">0</span>
+							</div>
+							<div class="mt-1 mb-1 spec-1">
+								<span>100% tươi sạch</span><span class="dot"></span><span>Thơm ngon</span><span class="dot"></span><span>Ít đường<br /></span>
+							</div>
+							<div class="mt-1 mb-1 spec-1">
+								<span>Không chắc bảo quản</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br /></span>
+							</div>
+							
+						</div>
+						<div class="align-items-center align-content-center col-md-3 border-left mt-1">
+							<div class="d-flex flex-column mt-4">
+								<input class="input-sale" id="input-milk-2" placeholder="Nhập số lượng mua" />
+								<button class="btn btn-outline-primary btn-sm mt-2 btn-sale" type="button" id="btn-milk-2">Mua</button>
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<div class="row p-2 bg-white border rounded mt-2 lastbox">
+						<div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="../sua/s_3.jpeg" alt="" /></div>
+						<div class="col-md-6 mt-1">
+							<h5>Sữa tươi vị dâu</h5>
+							<div class="d-flex flex-row">
+								<div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+								<span class="stored" id="stored-milk-3">0</span>
+							</div>
+							<div class="mt-1 mb-1 spec-1">
+								<span>100% tươi sạch</span><span class="dot"></span><span>Thơm ngon</span><span class="dot"></span><span>Ít đường<br /></span>
+							</div>
+							<div class="mt-1 mb-1 spec-1">
+								<span>Không chắc bảo quản</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br /></span>
+							</div>
+							
+						</div>
+						<div class="align-items-center align-content-center col-md-3 border-left mt-1">
+							<div class="d-flex flex-column mt-4">
+								<input class="input-sale" id="input-milk-3" placeholder="Nhập số lượng mua" />
+								<button class="btn btn-outline-primary btn-sm mt-2 btn-sale" type="button" id="btn-milk-3">Mua</button>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="../thingspeak.js"></script>
+	<script>
+	
+		lastSend = new Date(0)
+
+		function storedUpdate() {
+			fetchProduct(function() {
+
+				document.querySelectorAll('.stored').forEach(function(storedField) {
+					var product = findProduct(null, storedField.id.replace('stored-', ''))
+					storedField.innerHTML = product.stored
+				})
+
+			})
+		}
+
+		// cập nhật số lượng tồn kho sau mỗi 1s
+		storedUpdate()
+		setInterval(function() {
+			storedUpdate()
+		}, 1000)
+
+
+		// sự kiện khi người dùng nhâp số lượng mua
+		document.querySelectorAll('.input-sale').forEach(function(input) {
+			input.addEventListener('input', function(e) {
+
+				var product = findProduct(null, e.target.id.replace('input-', ''))
+
+
+				var numberStr = ''
+				for (var i = 0; i < e.target.value.length; i++) {
+
+					// loại bỏ ký tự không phải chữ số
+					if (0 <= e.target.value[i] && e.target.value[i] <= 9) {
+						numberStr += e.target.value[i]
+					}
+
+					// không cho người dùng nhập thêm nếu số lượng mua > tồn kho
+					if (parseInt(numberStr) > product.stored) {
+
+						// xóa số cuối để số lượng mua <= tồn kho
+						numberStr = numberStr.slice(0, -1)
+
+						break
+					}
+				}
+
+
+				// cập nhật input
+				e.target.value = numberStr
+
+			})
+		})
+
+
+		//xử lý sự kiện người dùng nhấn mua
+		document.querySelectorAll('.btn-sale').forEach(function(btn) {
+			btn.addEventListener('click', function(e) {
+
+				findProduct(function(product) {
+
+					var exportValue = parseInt(document.querySelector(`#input-${product.name}`).value)
+
+
+					var dif = (new Date().getTime() - lastSend.getTime()) / 1000
+					var minTime = 15
+
+					if (dif >= minTime) {
+
+						sendProduct(function() {
+							lastSend = new Date()
+						}, product.exportFieldName, exportValue)
+
+					} else {
+						alert(`Thao tác quá nhanh, cần đợi thêm ${(minTime-dif).toFixed(1)} để mua đơn hàng tiếp theo`)
+					}
+
+
+				}, e.target.id.replace('btn-', ''))
+
+			})
+		})
+	</script>
+
+</body>
+
+</html>

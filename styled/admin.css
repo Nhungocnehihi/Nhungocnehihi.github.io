@@ -1,0 +1,36 @@
+.col-md-10 {
+	width: 100%;
+}
+
+
+.rounded {
+	height: 35%;
+	border: 5px solid red;
+	text-align: left;
+}
+
+.info {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+
+.input-group {
+	width: 300px;
+}
+
+.product-name {
+	
+}
+
+.tonkho {
+	
+}
+
+.btn {
+	height: 100%
+}
+
+body {
+	background: #b8dae3;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	
+	<link rel="stylesheet" href="../styled/admin.css">
+	
+	<link rel="icon" type="image/x-icon" href="/icon/thongke.png">	
+
+</head>
+
+<body>
+
+	<div id="menu"></div>
+	<script>
+		$('#menu').load('/header/header.html', (response, status, xhr) => {
+			$('#admin').addClass('selected');
+			var myTimeOut = setTimeout(() => {
+				$('#content').innerHeight($(window).innerHeight() - document.querySelector('#menu').clientHeight);
+				clearTimeout(myTimeOut)
+			}, 100)
+		})
+	</script>
+
+	<div id="content">
+
+		<div class="container mt-5 mb-5">
+
+			<div class="d-flex justify-content-center row">
+				<div class="col-md-10">
+					
+					<div class="row p-2 bg-white border rounded mt-2">
+						<div class="info">
+							<h3 class="product-name">Sữa tươi có đường</h3>
+								
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+								<button class="btn btn-outline-primary" type="button">Nhập hàng</button>
+							  </div>
+							  <input type="text" class="form-control" placeholder="Số lượng nhập hàng">
+							</div>
+							
+							<h4 class="tonkho-1" >Tồn kho: 0</h4>
+						</div>
+						
+			
+						<div class="chart-container d-flex justify-content-center">
+							<canvas id="chartNhap1" style="max-width:50%"></canvas>
+							<canvas id="chartXuat1" style="max-width:50%"></canvas>
+						</div>
+					</div>
+					
+					<div class="row p-2 bg-white border rounded mt-2">
+						<div class="info">
+							<h3 class="product-name">Sữa tươi không đường</h3>
+								
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+								<button class="btn btn-outline-primary" type="button">Nhập hàng</button>
+							  </div>
+							  <input type="text" class="form-control" placeholder="Số lượng nhập hàng">
+							</div>
+							
+							<h4 class="tonkho-2" >Tồn kho: 0</h4>
+						</div>
+						<div class="chart-container d-flex justify-content-center">
+							<canvas id="chartNhap2" style="max-width:50%"></canvas>
+							<canvas id="chartXuat2" style="max-width:50%"></canvas>
+						</div>
+					</div>
+					
+					<div class="row p-2 bg-white border rounded mt-2">
+						<div class="info">
+							<h3 class="product-name">Sữa tươi vị dâu</h3>
+								
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+								<button class="btn btn-outline-primary" type="button">Nhập hàng</button>
+							  </div>
+							  <input type="text" class="form-control" placeholder="Số lượng nhập hàng">
+							</div>
+							
+							<h4 class="tonkho-3" >Tồn kho: 0</h4>
+						</div>
+						<div class="chart-container d-flex justify-content-center">
+							<canvas id="chartNhap3" style="max-width:50%"></canvas>
+							<canvas id="chartXuat3" style="max-width:50%"></canvas>
+						</div>
+					</div>
+					
+				
+					
+					
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+	
+	
+	<script src="../thingspeak.js"></script>
+	<script>
+	
+	
+	function storedUpdate() {
+		fetchProduct(function() {
+			
+			products.forEach(function(product) {
+				switch (product.name) {
+					case 'milk-1':
+						document.querySelector('.tonkho-1').innerHTML = `Tồn kho: ${product.stored}`
+						chartUpdate(chartNhap1, product.importChartData)
+						chartUpdate(chartXuat1, product.exportChartData)
+						break
+					case 'milk-2':
+						document.querySelector('.tonkho-2').innerHTML = `Tồn kho: ${product.stored}`
+						chartUpdate(chartNhap2, product.importChartData)
+						chartUpdate(chartXuat2, product.exportChartData)
+						break
+					case 'milk-3':
+						document.querySelector('.tonkho-3').innerHTML = `Tồn kho: ${product.stored}`
+						chartUpdate(chartNhap3, product.importChartData)
+						chartUpdate(chartXuat3, product.exportChartData)
+						break
+				}
+
+				
+				
+			})
+			
+			
+	
+		})
+	}
+	
+	// cập nhật số lượng tồn kho sau mỗi 1s
+	//storedUpdate()
+	setInterval(function() {
+		storedUpdate()
+	}, 1000)
+	
+	
+	
+	function chartUpdate(chart, chartData) {
+
+		var x = [], y = [];
+		chartData.forEach(function(data) {
+			x.push(data.value)
+			y.push(data.timestamp)
+		})
+		
+		if (compareArray(chart.data.datasets[0].data, x) == false) {
+			chart.data.datasets[0].data = x
+			chart.data.labels = y
+			chart.update()
+		}
+			
+				
+	}
+	
+	
+	
+	var nhapLabel = 'Nhập'
+	var xuatLabel = 'Xuất'
+	
+	var nhapColor = 'blue'
+	var xuatColor = 'red'
+
+	var chartNhap1 = buildChart('chartNhap1', nhapLabel, nhapColor)
+	var chartXuat1 = buildChart('chartXuat1', xuatLabel, xuatColor)
+	
+	var chartNhap2 = buildChart('chartNhap2', nhapLabel, nhapColor)
+	var chartXuat2 = buildChart('chartXuat2', xuatLabel, xuatColor)
+	
+	var chartNhap3 = buildChart('chartNhap3', nhapLabel, nhapColor)
+	var chartXuat3 = buildChart('chartXuat3', xuatLabel, xuatColor)
+	
+	
+	function buildChart(chartID, label, color) {
+		return new Chart(chartID, {
+			type: "bar",
+			data: {
+				labels: [],
+				datasets: [{
+					fill: false,
+					backgroundColor: color,
+					label: label,
+					data: []
+				}, ]
+			},
+			options: {
+				plugins: {
+					legend: {
+						display: true,
+					}
+				},
+				scales: {
+					yAxes: [{
+						display: true,
+						ticks: {
+							beginAtZero: true,
+						}
+					}]
+				}
+			}
+		});
+	}
+	
+	function compareArray(arr1, arr2) {
+		
+		if (arr1.length != arr2.length) {
+			return false
+		}
+			
+		for(var i = 0; i < arr1.length; i++) {
+			if (arr1[i] != arr2[i]) {
+				return false
+			}
+		}
+		
+		return true
+		
+	}
+	
+		
+	</script>
+
+
+
+</body>
+
+</html>
